@@ -4,19 +4,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
   src: path.join(__dirname, 'src'),
-  build: path.join(__dirname, 'build')
+  dist: path.join(__dirname, 'public/dist')
 };
 
 module.exports = {
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js']
   },
   entry: {
-    app: path.join(PATHS.src, 'index'),
+    app: PATHS.src,
     vendor: ['react', 'react-dom', 'react-router']
   },
   output: {
-    path: PATHS.build,
+    path: PATHS.dist,
     filename: '[name].js',
     chunkFilename: '[id].js',
     publicPath: '/'
@@ -45,7 +45,8 @@ module.exports = {
     inline: true,
     stats: 'errors-only',
     host: process.env.HOST,
-    port: process.env.PORT
+    port: process.env.PORT,
+    outputPath: PATHS.dist,
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({

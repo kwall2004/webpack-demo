@@ -4,23 +4,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
   src: path.join(__dirname, 'src'),
-  build: path.join(__dirname, 'build')
+  dist: path.join(__dirname, 'public/dist')
 };
 
 module.exports = {
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js']
   },
   entry: {
-    app: path.join(PATHS.src, 'main'),
+    app: PATHS.src,
     vendor: ['react', 'react-dom', 'react-router']
   },
   output: {
-    path: PATHS.build,
+    path: PATHS.dist,
     filename: '[name].[chunkhash].js',
     chunkFilename: '[id].[chunkhash].js',
-    publicPath: '/'
+    publicPath: '/public/dist/'
   },
   module: {
     loaders: [
@@ -46,8 +46,8 @@ module.exports = {
       names: ['vendor', 'manifest']
     }),
     new HtmlWebpackPlugin({
-      template: './index.html',
-      publicPath: '/'
+      template: './src/index.html',
+      publicPath: '/public/dist/'
     }),
     new webpack.DefinePlugin({
       'process.env': {
