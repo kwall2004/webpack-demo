@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import styles from './shell.css';
 
-const Main = React.createClass({
+const Shell = React.createClass({
   render() {
     return (
       <div>
@@ -27,4 +27,4 @@ const Main = React.createClass({
   }
 });
 
-module.exports = Main;
+module.exports = Shell;
